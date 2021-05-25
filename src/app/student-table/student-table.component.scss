@@ -1,0 +1,139 @@
+
+input{
+  height: 25px;
+  margin-left:10px;
+}
+
+
+.StudentTable {
+  width: 900px;
+  height: 100%;
+  margin: auto;
+  border-spacing:0px;
+  border: 4px solid black;
+  td {
+    text-align: center;
+    padding: 5px;
+    margin:0;
+    border: 2px solid black;
+  }
+  .tdClose{
+    width: 10px;
+  }
+}
+
+
+.findAndLowBox{
+  width: 900px;
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+  border: 2px solid black;
+  border-top: 0px;
+  padding: 15px;
+  box-sizing: border-box;
+  margin: auto;
+
+  button{
+    margin: 2%;
+    height: 35px;
+  }
+}
+
+.findStudentBox{
+  margin-left: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+
+
+
+
+}
+
+
+
+
+
+
+// фильтрация
+
+.filter{
+  width: 900px;
+  border:2px solid black;
+  display: grid;
+  grid-template: 1fr / 1fr;
+  margin: auto;
+  justify-content:center;
+  align-items: center;
+  padding: 15px;
+  box-sizing: border-box;
+  .BFD{
+    height: 30px;
+  }
+
+}
+
+
+
+
+
+// у кого бал ниже 3
+.lowMark {
+  color: red;
+}
+
+
+
+// Поиск студента по Имени
+.findStudent {
+  background: yellow;
+}
+
+
+
+.Editing{
+  display: inline-block;
+  height:30px;
+  width:40px;
+  font-size: 18px;
+
+}
+
+.addForm{
+  background-color: #b7f7cb;
+}
+
+
+.Helper{
+  margin-left: auto;
+  button{
+    width: 35px;
+    height:35px;
+  }
+}
+
+
+.help{
+  width: 900px;
+  margin: auto;
+  font-weight: bolder;
+  text-align: center;
+  color: gray;
+
+}
+.helpNone{
+  display: none;
+}
+
+
+
+.BackendON{
+  width: 900px;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}

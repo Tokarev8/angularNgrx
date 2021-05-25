@@ -1,0 +1,190 @@
+
+<div class="BackendON">
+
+
+  <button [routerLink]='[""]' [queryParams] = "{debug: true}" (click)="getArrayStudent()">Backend ON</button>
+
+  <button [routerLink]='[""]' [queryParams] = "" (click)="setArrayStudent()">Backend OFF</button>
+
+</div>
+
+
+
+
+<modal-dialog
+  *ngIf="close"
+  [array] = "array"
+  [element]="deleteElement"
+  (transArray)="upArray($event)"
+  (closeWindow)="close=false" > </modal-dialog>
+
+
+<form-student
+  *ngIf="closeForm"
+
+
+></form-student>
+
+
+
+<div class="filter">
+
+  <table class="FTD">
+    <caption>
+      Фильтр студентов по дате
+    </caption>
+    <tr>
+      <td>
+        <span>От</span>
+      </td>
+      <td width="35%">
+        <input type="date" [(ngModel)]="fromDateB" helper="{{str1}}"
+               (tumbler)="tumbler=$event"  (messageOut)="mainstr=$event" >
+      </td>
+      <td>
+        <span>До</span>
+      </td>
+      <td width="35%">
+        <input type="date" [(ngModel)]="beforeDateB" helper="{{str1}}"
+               (tumbler)="tumbler=$event"  (messageOut)="mainstr=$event" >
+      </td>
+      <td>
+        <button class="BFD" (click)="filterDate()">Применить</button>
+      </td>
+      <td>
+        <button class="BFD" (click)="returnOriginalArrayD()">Отменить</button>
+      </td>
+    </tr>
+
+  </table>
+  <table class="FTB">
+    <caption>
+      Фильтр студентов по баллам
+    </caption>
+    <tr>
+      <td>
+        <span>От</span>
+      </td>
+      <td width="35%">
+        <input type="text" [(ngModel)]="fromPoints" helper="{{str2}}"
+               (tumbler)="tumbler=$event"  (messageOut)="mainstr=$event" >
+      </td>
+      <td>
+        <span>До</span>
+      </td>
+      <td width="35%">
+        <input type="text" [(ngModel)]="beforePoints" helper="{{str2}}"
+               (tumbler)="tumbler=$event"  (messageOut)="mainstr=$event" >
+      </td>
+      <td>
+        <button class="BFD" (click)="filterBall()">Применить</button>
+      </td>
+      <td>
+        <button class="BFD" (click)="returnOriginalArrayB()">Отменить</button>
+      </td>
+    </tr>
+
+  </table>
+</div>
+
+
+
+<div class="findAndLowBox">
+
+  <button class="addForm" (click)="addForm()" helper="{{str3}}"
+          (tumbler)="tumbler=$event"  (messageOut)="mainstr=$event"
+          [routerLink]='["/add-student"]'>
+   Добавить Студента
+  </button>
+
+  <button (click)="disableLowMark()" helper="{{str4}}"
+          (tumbler)="tumbler=$event"  (messageOut)="mainstr=$event" >
+    Балл ниже 3
+  </button>
+
+  <div class="findStudentBox">
+    <p>Поиск студента по имени</p>
+    <input type="text" #findStudent [(ngModel)]="studentName" helper="{{str5}}"
+           (tumbler)="tumbler=$event"  (messageOut)="mainstr=$event" >
+  </div>
+</div>
+
+
+<div class="findAndLowBox">
+<div>
+  <p >
+    Поиск студента по фамилии
+  </p>
+  <input type="text" #findStudent [(ngModel)]="studentSurname"
+         helper="{{str6}}" (tumbler)="tumbler=$event"  (messageOut)="mainstr=$event"   >
+</div>
+
+
+</div>
+
+
+<div
+  [ngClass]="{
+     'help':tumbler,
+     'helperNone':!tumbler
+}"
+>
+  <p>{{mainstr}}</p>
+</div>
+
+
+<br>
+<br>
+<br>
+
+
+
+<table class="StudentTable" >
+  <caption>
+    Список студентов
+  </caption>
+
+  <tr>
+    <td>
+      Фамилия
+      <button (click)="sortSurname()">&#8744;</button>
+    </td>
+    <td>
+      Имя
+      <button (click)="sortName()">&#8744;</button>
+    </td>
+    <td>
+      Отчество
+      <button (click)="sortMiddleName()">&#8744;</button>
+    </td>
+    <td>
+      Дата рождения
+      <button (click)="sortDateB()">&#8744;</button>
+    </td>
+    <td colspan="2">
+      Средний балл
+      <button (click)="sortAverageMark()">&#8744;</button>
+    </td>
+  </tr>
+
+  <tr *ngFor="let x of originalStudents$ | async"
+
+   appZoom >
+
+    <td > {{x.surname}} </td>
+    <td>{{x.name}}</td>
+    <td >{{x.middleName}}</td>
+    <td >{{x.dateOfBirth}}</td>
+    <td >{{x.averageMark}}</td>
+    <td  class="tdClose">
+      <button class="Editing" >&#10060;</button>
+      <button class="Editing"
+
+             >&#10000;</button>
+    </td>
+  </tr>
+
+</table>
+
+
+

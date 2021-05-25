@@ -1,0 +1,134 @@
+
+<div class="backdrop"></div>
+
+<div class="MainBox">
+
+  <button class="close"
+          [routerLink]='[""]'
+          [queryParams] = '{debug: serverOn}'
+
+                      >&#10060;</button>
+  <h2>{{title}}</h2>
+  <form action="#" [formGroup]="form" (ngSubmit)="submit()">
+
+
+    <div class="forms">
+
+      <div class="fio" formGroupName="fio">
+        <div class="FIO-surname">
+          <label>Фамилия</label>
+          <input type="text" placeholder="Иванов" formControlName="surname">
+          <div class="validation" *ngIf="form.get('fio')?.get('surname')?.touched ">
+            <small *ngIf="form.get('fio')?.get('surname')?.errors?.required">
+              Поле "Фамилия" не может быть пустым
+            </small>
+            <small *ngIf="form.get('fio')?.get('surname')?.errors?.incorrect ">
+              Фамилия может состоять только из букв кириллицы
+            </small>
+            <small *ngIf="form.get('fio')?.errors?.surnameError ">
+              {{form.get('fio')?.errors?.surnameError}}
+            </small>
+          </div>
+        </div>
+
+
+
+        <div class="FIO-name">
+          <label>Имя</label>
+          <input type="text" placeholder="Иван" formControlName="name">
+          <div class="validation"
+               *ngIf="form.get('fio')?.get('name')?.touched" >
+            <small *ngIf="form.get('fio')?.get('name')?.errors?.required">
+              Поле "Имя" не может быть пустым
+            </small>
+            <small *ngIf="form.get('fio')?.get('name')?.errors?.incorrect">
+              Имя  может состоять только из букв кириллицы
+            </small>
+            <small *ngIf="form.get('fio')?.errors?.nameError ">
+              {{form.get('fio')?.errors?.nameError}}
+            </small>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="FIO-middleName">
+          <label>Отчество</label>
+          <input type="text" placeholder="Иванович" formControlName="middleName">
+          <div class="validation" *ngIf="form.get('fio')?.get('middleName')?.touched">
+            <small *ngIf="form.get('fio')?.get('middleName')?.errors?.required">
+              Поле "Отчество" не может быть пустым
+            </small>
+            <small *ngIf="form.get('fio')?.get('middleName')?.errors?.incorrect">
+              Отчество  может состоять только из букв кириллицы
+            </small>
+            <small *ngIf="form.get('fio')?.errors?.middleNameError ">
+              {{form.get('fio')?.errors?.middleNameError}}
+            </small>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="DateBall">
+
+
+        <div class="date">
+          <label>Дата рождения</label>
+          <input type="date" placeholder="29.04.2005" formControlName="dateOfBirth" >
+          <div class="validation" *ngIf="form.get('dateOfBirth')?.touched && form.get('dateOfBirth')?.invalid">
+            <small *ngIf="form.get('dateOfBirth')?.errors?.required">
+              Поле даты рождения не может быть пустым
+            </small>
+            <small *ngIf="form.get('dateOfBirth')?.errors?.ErrorDate ">
+              Студент должен быть старше 10 лет
+            </small>
+          </div>
+        </div>
+
+
+
+        <div class="ball">
+          <label>Средний балл</label>
+          <input type="number" formControlName="averageMark" >
+          <div class="validation"  *ngIf="form.get('averageMark')?.touched && form.get('averageMark')?.invalid">
+            <small *ngIf="form.get('averageMark')?.errors?.required">
+              Поле "Средний балл" не может быть пустым
+            </small>
+            <small *ngIf="!form.get('averageMark')?.errors?.ballFV2 && !form.get('averageMark')?.errors?.required">
+              Диапозон среднего балла от 2 до 5
+            </small>
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <div class="ButtonSC">
+        <div class="Submit">
+          <button  type="submit"
+           [ngClass]="{
+            'disabled': form.invalid,
+            'enabled' : !form.invalid}"
+
+              > {{textButton}}
+            </button>
+        </div>
+
+        <div class="Clear">
+          <button type="reset">Очистить</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
